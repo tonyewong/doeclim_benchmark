@@ -45,7 +45,7 @@
 ! 23.05.2007 Ocean heat uptake added (EK)
 ! 12.02.2008 Translated to Fortran90 (Marlos Goes <mpg14@psu.edu>)
 ! 15.08.2009 Written as Fortran90 module (Brian Tuttle <btuttle@psu.edu>)
-!  
+!
 !==============================================================================
 !
 ! Global Parameters:
@@ -62,7 +62,7 @@
 !   q2co    2xCo2 forcing increase [W/m^2]
 !   rlam    clim sens. over land enhancement
 !   zbot    depth of interior ocean
-!   
+!
 !   temp_landair:       land air temperature anomaly (K)
 !   temp_sst:           sea surface temperature anomaly (K)
 !   heat_mixed:         mixed layer heat anomaly (10^22 J)
@@ -345,7 +345,7 @@ SUBROUTINE doeclimtimestep_simple(n,forcing,temp)
 !  ==========================================================================
 ! | Simple climate model DOECLIM
 ! |
-! | calculates sea surface and land air temperature response to radiative 
+! | calculates sea surface and land air temperature response to radiative
 ! | forcing based on an energy balance model with 1-D diffusion ocean
 ! |
 ! | *** computes single time step ***
@@ -359,9 +359,9 @@ SUBROUTINE doeclimtimestep_simple(n,forcing,temp)
 ! | Output:
 ! |       temp: global mean temperature anomaly (K), relative to preindustrial
 ! |
-! | Assumptions: 
+! | Assumptions:
 ! |       land surface temperature = land air temperature
-! |       mixed layer temperature  = sea surface temperatures 
+! |       mixed layer temperature  = sea surface temperatures
 ! |                                = marine air temperature divided by bsi
 !  ==========================================================================
 
@@ -444,7 +444,7 @@ SUBROUTINE doeclimtimestep_simple(n,forcing,temp)
                         (fso*powtoheat*deltat)
 
    endif
-   
+
    temp = flnd*temp_landair(n) + (1.-flnd)*bsi*temp_sst(n)
 
 
@@ -595,7 +595,7 @@ END SUBROUTINE ELGS
 SUBROUTINE alloc_doeclim()
 
     implicit none
-    
+
     integer(i4b) :: astat = 0
 
     allocate(temp_landair(nsteps), STAT=astat)
@@ -619,7 +619,7 @@ END SUBROUTINE alloc_doeclim
 SUBROUTINE dealloc_doeclim()
 
     implicit none
-    
+
     integer(i4b) :: astat = 0
 
     deallocate(temp_landair, STAT=astat)
